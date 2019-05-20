@@ -6,9 +6,7 @@ from datetime import tzinfo, timedelta, datetime
 import datetime
 from email.message import EmailMessage
 import smtplib
-
-# Who gets the email
-receiver = ['doug.ray@starbanner.com']
+import creds
 
 # Which market is reported
 market = 'Gainesville and Ocala, for now'
@@ -48,8 +46,10 @@ print(msg)
 msg = EmailMessage()
 msg.set_content("No content yet")
 
-sender = 'data@sunwriters.com'
-gmail_password = '%WatchingTheDetectives'
+sender = creds.gmail_address
+receiver = creds.receiver
+gmail_password = creds.gmail_password
+
 msg['Subject'] = f'Latest cinema scrape for {market}'
 msg['from'] = sender
 msg['To'] = receiver
